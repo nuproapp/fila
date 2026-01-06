@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atenção: Status da sua Fila</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: #05020a; color: white; font-family: 'Inter', sans-serif; }
+        .glass-card { background: rgba(30, 16, 53, 0.4); border: 1px solid rgba(124, 58, 237, 0.2); backdrop-filter: blur(12px); }
+        .status-bar { height: 6px; border-radius: 10px; background: #1e1b2e; overflow: hidden; }
+        .status-progress { width: 15%; height: 100%; background: #ef4444; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.6; } 100% { opacity: 1; } }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <div class="max-w-md w-full">
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-red-500/10 rounded-full mb-4">
+                <i class="fas fa-clock text-red-500 text-2xl"></i>
+            </div>
+            <h1 class="text-2xl font-black uppercase italic text-red-500 tracking-tighter">Fila de Espera Ativa</h1>
+            <p class="text-gray-400 text-xs mt-2 uppercase font-bold tracking-widest">Seu acesso está em processamento</p>
+        </div>
+
+        <div class="glass-card rounded-3xl p-6 md:p-8 relative overflow-hidden">
+            <div class="mb-6">
+                <div class="flex justify-between text-[10px] font-black uppercase mb-2">
+                    <span class="text-red-500">Posição na Fila: #1.482</span>
+                    <span class="text-gray-500">Previsão: 28 dias úteis</span>
+                </div>
+                <div class="status-bar">
+                    <div class="status-progress"></div>
+                </div>
+            </div>
+
+            <div class="space-y-4 text-center">
+                <p class="text-sm text-gray-300 leading-relaxed">
+                    Identificamos uma alta demanda de novos usuários. Seu pagamento foi aprovado, mas o envio das credenciais seguirá o <span class="font-bold text-white underline">prazo padrão de até 28 dias úteis</span>.
+                </p>
+
+                <div class="h-px bg-white/5 my-4"></div>
+
+                <h3 class="text-lg font-black text-white uppercase italic">Deseja pular a fila?</h3>
+                <p class="text-[11px] text-gray-400 px-4">
+                    Ao pagar a taxa de antecipação, nosso servidor prioriza seu cadastro e envia o acesso em <span class="text-green-400 font-bold">menos de 5 minutos</span>.
+                </p>
+
+                <div class="bg-purple-600/10 border border-purple-500/30 rounded-2xl p-4 my-6">
+                    <div class="text-[10px] text-purple-400 font-bold uppercase mb-1">Taxa Única de Antecipação</div>
+                    <div class="text-3xl font-black text-white">R$ 24,00</div>
+                </div>
+
+                <button onclick="irParaPagamento()" class="w-full bg-white text-black py-5 rounded-2xl font-black text-lg uppercase shadow-[0_0_30px_rgba(255,255,255,0.1)] transition transform hover:scale-[1.03] active:scale-95">
+                    Receber Agora <i class="fas fa-bolt ml-2 text-purple-600"></i>
+                </button>
+
+                <button onclick="continuarEsperando()" class="mt-4 text-[9px] text-gray-600 hover:text-gray-400 underline uppercase tracking-widest font-bold">
+                    Não, eu prefiro esperar os 28 dias úteis
+                </button>
+            </div>
+        </div>
+
+        <div class="mt-8 flex justify-center gap-6 opacity-30 grayscale">
+            <i class="fab fa-pix text-2xl"></i>
+            <i class="fas fa-shield-alt text-2xl"></i>
+            <i class="fas fa-check-double text-2xl"></i>
+        </div>
+    </div>
+
+    <script>
+        // COLOQUE O LINK DA CAKTO DE R$ 24,00 AQUI
+        const LINK_ANTECIPACAO = "SEU_LINK_CAKTO_24_REAIS";
+
+        function irParaPagamento() {
+            // Redireciona para o link de 24 reais
+            window.location.href = LINK_ANTECIPACAO;
+        }
+
+        function continuarEsperando() {
+            alert("Sua posição na fila foi confirmada. Você receberá o acesso no prazo de 28 dias úteis.");
+            // Opcional: Redirecionar para uma página de "Obrigado" simples
+        }
+    </script>
+</body>
+</html>
